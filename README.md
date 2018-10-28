@@ -1,6 +1,6 @@
-# Bot for [Chaincoin's Discord](https://discord.gg/NabdcJ7)
+# Bot for [XGamecoin Discord] https://discord.gg/kHfQm3a
 
-(This README will be updated along with bot updates)
+           Originally based off of Chaincoin's bot (This README will be updated along with bot updates)
 
 ## Features:
 
@@ -84,5 +84,6 @@ node bot/bot.js
 ## Donation
 ```
 Bitcoin: 1Fcb2JAGziHSCdMqcysP1jHoXHdh3ikkMn
-Chaincoin: CL5WSq5M1RRPFDfDbZp6dq2ndV6F93CtkB
+Xgamecoin:XZ3K3XdxFaadV5cEqKPrjQuKq3Zdti7HHp
+
 ```
