@@ -1,6 +1,6 @@
-# Bot for [XGamecoin Discord] https://discord.gg/kHfQm3a
+# Bot for XGamecoin App Discord https://discord.gg/kHfQm3a
 
-           Originally based off of Chaincoin's bot (This README will be updated along with bot updates)
+        Originally based off of Chaincoin's bot (This README will be updated along with bot updates)
 
 ## Features:
 
