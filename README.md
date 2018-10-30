@@ -42,13 +42,6 @@
 * **!soak [amount]**
     * Tip every member who is currently online.
     * This command only can be used in #chaintipster
-* **!spanish [subcommand] [tutorial, faq, info, masternode, etc.]**
-    * Guías y Tutoriales.
-    * Preguntas más frecuentes.
-    * ¿Qué esChainCoin - CHC?
-    * ¿Qué es un Masternode?
-    * etc. soon
-    * This command only can be use in #espanol-channel
 * **!specs**
     * ChainCoin specification
 * **!tip [amount] [@username] || !tip [@username] [amount]**
