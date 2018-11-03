@@ -75,7 +75,7 @@ bot.on('messageReactionAdd', async (reaction, user) => {
     }
     if (reaction.message.id == joinmsgid2) {
         if (reaction.emoji.id === "390878635437064193") { // Github-updates
-            member.addRole("390882439528054785");
+            member.addRole("506851003094532106");
         } else if (reaction.emoji.id === "390878688935411722") { // Development
             member.addRole("390882465830666240");
         } else if (reaction.emoji.id === "390878926379155456") { // Pre-proposal-feedback
@@ -126,9 +126,9 @@ bot.on('messageReactionRemove', async (reaction, user) => {
     if (reaction.message.id == joinmsgid1) {
         if (reaction.emoji.id === "390878445309132800") { // Mining
             member.removeRole("390882049587937280");
-        } else if (reaction.emoji.id === "390878479492579332") { // Marketplace
+        } else if (reaction.emoji.id === "390878479492579332") { // Market
             member.removeRole("390882132064600064");
-        } else if (reaction.emoji.id === "390878529295745035") { // Chaintipster
+        } else if (reaction.emoji.id === "390878529295745035") { // Xgame-Tipbot
             member.removeRole("390882206626873384");
         } else if (reaction.emoji.id === "390878573331742750") { // Altcoins
             member.removeRole("390882258149572617");
@@ -139,7 +139,7 @@ bot.on('messageReactionRemove', async (reaction, user) => {
     }
     if (reaction.message.id == joinmsgid2) {
         if (reaction.emoji.id === "390878635437064193") { // Github-updates
-            member.removeRole("390882439528054785");
+            member.removeRole("506851003094532106");
         } else if (reaction.emoji.id === "390878688935411722") { // Development
             member.removeRole("390882465830666240");
         } else if (reaction.emoji.id === "390878926379155456") { // Pre-proposal-feedback
@@ -197,7 +197,7 @@ bot.on("ready", async function() {
         author: {
             name: "Join Channels Instruction."
         },
-        description: 'Welcome to the Chaincoin Discord! Please select the channels YOU are interested in following. JOIN by "Clicking On" the corresponding emoji **below the message**. Deselecting the emoji will remove the channel from your view.'
+        description: 'Welcome to the XGamecoin Official Discord! Please select the channels YOU are interested in following. JOIN by "Clicking On" the corresponding emoji **below the message**. Deselecting the emoji will remove the channel from your view.'
     };
 
     await bot.channels.get(ChannelID)
@@ -211,10 +211,10 @@ bot.on("ready", async function() {
             icon_url: Bot.iconurl,
             text: "\u00A9 " + Bot.name
         },
-        description: "__**[ Chain General & Chat ]**__ \n\n" +
+        description: "__**[ General Chat & Bot ]**__ \n\n" +
             "**Mining**  <:mining:390878445309132800> \n\n" +
-            "**Marketplace **  <:marketplace:390878479492579332> \n\n" +
-            "**Chaintipster**  <:chaintipster:390878529295745035> \n\n" +
+            "**Market **  <:market:390878479492579332> \n\n" +
+            "**XGame Tipbot**  <:tipbot:390878529295745035> \n\n" +
             "**Altcoins**  <:altcoins:390878573331742750> \n\n" +
 			"**Memes**  :thinking:"
     };
