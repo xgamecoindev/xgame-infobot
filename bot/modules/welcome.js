@@ -3,9 +3,9 @@ let config = require("config");
 let Bot = config.get("bot");
 let ChannelID = config.get("Channels").general;
 let SupportID = config.get("Channels").support;
-let MasternodeID = config.get("Channels").masternode;
+//let MasternodeID = config.get("Channels").masternode;
 let JoinID = config.get("Channels").joinchannels;
-let hasPermsChainster = require("../helpers.js").hasPermsChainster;
+let hasPermsXgamester = require("../helpers.js").hasPermsXgamester;
 let inPrivate = require("../helpers.js").inPrivate;
 exports.custom = [
     "onUserJoin"
@@ -13,7 +13,7 @@ exports.custom = [
 
 
 exports.commands = [
-    "welcome",
+//   "welcome", //
 	"join"
 ];
 
@@ -27,9 +27,9 @@ exports.onUserJoin = function(bot) {
                 text: "\u00A9 " + Bot.name
             },
             author: {
-                name: "Welcome to  ChainCoin Discord Community"
+                name: "Welcome to XGamecoin Discord Community"
             },
-            description: 'Welcome to the Chaincoin Community. This is the "Home For Chainsters" from around the world. A place where we come together and collaborate, chat, work, contribute and frankly, cut up and have a great time. ' + "We don't always agree but we do respect diverse views and  work for a greater outcome for all parties involved in ChainCoin and taking this journey with us. Take a few minutes to browse through the channels and see the work happening here. We are always open to new talent joining and contributing your best to the ChainCoin Vision and helping us bring it into reality.   As a new member you can simply enter-->>  **!help**, to get more information and help from our handy CHCBot. Thanks For Dropping By, We Are Glad You Are Here.",
+            description: 'Welcome to the Xgamecoin Community. This is the "Home For XGamestars" from around the world. A place where we come together and collaborate, chat, work, contribute and frankly, cut up and have a great time. ' + "We don't always agree but we do respect diverse views and  work for a greater outcome for all parties involved in Xgamecoin and taking this journey with us. Take a few minutes to browse through the channels and see the work happening here. We are always open to new talent joining and contributing your best to the Xgamecoin and helping us bring it into reality.   As a new member you can simply enter-->>  **!help**, to get more information and help from our handy Xgame Infobot. Thanks For Dropping By, We Are Glad You Are Here.",
             image: {
                 url: Bot.iconurl
             }
@@ -72,7 +72,7 @@ exports.onUserJoin = function(bot) {
 
 exports.welcome = {
     usage: "**[@username]**",
-    description: "Send welcome message to specified user.\n    This command only can be use in <#" + ChannelID + "> and user has Chainster role",
+    description: "Send welcome message to specified user.\n    This command only can be use in <#" + ChannelID + "> and user has XGamestars role",
     process: function(bot, msg, suffix) {
         let embed;
         if (!ChannelID.includes(msg.channel.id) || inPrivate(msg)) {
@@ -85,7 +85,7 @@ exports.welcome = {
                         text: "\u00A9 " + Bot.name
                     },
                     author: {
-                        name: "Woops..."
+                        name: "Oops..."
                     },
                     description: "Command cannot be used in a DM.\nPlease use <#" + ChannelID + ">."
                 };
@@ -102,7 +102,7 @@ exports.welcome = {
                         text: "\u00A9 " + Bot.name
                     },
                     author: {
-                        name: "Woops, Wrong Channel..."
+                        name: "Oops, Wrong Channel..."
                     },
                     description: "Please use <#" + ChannelID + ">."
                 };
@@ -131,7 +131,7 @@ exports.welcome = {
             }); */
             return;
         }
-        if (!hasPermsChainster(msg)) {/*
+        if (!hasPermsXgamester(msg)) {/*
             embed = {
                 color: 1741945,
                 timestamp: new Date(),
@@ -157,11 +157,11 @@ exports.welcome = {
                 text: "\u00A9 " + Bot.name
             },
             author: {
-                name: "Welcome to the Official ChainCoin Discord."
+                name: "Welcome to the Official Xgamecoin Discord."
             },
-            description: "<@" + msg.mentions.members.first().id + ">, Welcome to Chaincoin's Discord. You are in our Chainster Chat, Please see <#" + SupportID + "> or <#" + MasternodeID + "> if you need technical support.",
+            description: "<@" + msg.mentions.members.first().id + ">, Welcome to Xgamecoin Discord. You are in our XGamestars Chat, Please see <#" + SupportID + "> or <#" + MasternodeID + "> if you need technical support.",
             image: {
-                url: "https://raw.githubusercontent.com/ChainBotMaster/chainbot/master/bot/image/chccoindesignnew-02.png"
+                url: "https://raw.githubusercontent.com/xgamecoindev/xgame-infobot/master/bot/image/xgamelogo01.png"
             }
 
         };
@@ -185,7 +185,7 @@ exports.join = {
             },
             description: "You Can Join EVEN MORE Channels in <#" + JoinID + ">",
             image: {
-                url: "https://raw.githubusercontent.com/ChainBotMaster/chainbot/master/bot/image/chcjoinchannel-02.png"
+                url: "https://raw.githubusercontent.com/xgamecoindev/xgame-infobot/master/bot/image/xgamejoinchannel.png"
             }
 
         };
