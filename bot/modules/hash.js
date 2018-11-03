@@ -6,7 +6,7 @@ let ChannelID = config.get("Channels").mining;
 let inPrivate = require("../helpers.js").inPrivate;
 
 exports.commands = [
-    "hash"
+//    "hash"
 ];
 
 exports.custom = [
