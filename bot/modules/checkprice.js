@@ -7,8 +7,8 @@ let inPrivate = require("../helpers.js").inPrivate;
 
 exports.commands = [
     "cp",
-    "market",
-    "price"
+//    "market",
+//    "price"
 ];
 
 exports.cp = {
@@ -245,7 +245,7 @@ exports.price = {
 
 exports.market = {
     usage: "",
-    description: "See all Chaincoin buy/sell orders.",
+    description: "See all Xgamecoin buy/sell orders.",
     process: function(bot, msg, suffix) {
         let embed;
         let field_buy = "Buy offers:";
