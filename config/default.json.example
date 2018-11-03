@@ -1,18 +1,18 @@
 {  
     "bot":{  
-        "token":"",
+        "token":"NTAxNDM-----------token---------------UNuSL2Ng",
         "prefix":"!",
         "name": "",
-        "iconurl": "https://raw.githubusercontent.com/ChainBotMaster/chainbot/master/bot/image/newchc-01.png",
+        "iconurl": "https://raw.githubusercontent.com/xgamecoindev/xgame-infobot/master/bot/image/xgamelogo01.png",
         "debug":false
     },
-    "chccore":{  
-        "port":,
-        "username":"",
-        "password":""
+    "xgamed":{  
+        "port":35466,
+        "username":"xgameuser",
+        "password":"xxxxxxxxxxxx"
     },
     "role":{  
-        "chainster":"Chainster",
+        "xgamester":"Xgamester",
 		"support":"Support"
     },
     "mongodb":{
@@ -20,16 +20,16 @@
 		"db": ""
 	},
     "Channels":{  
-        "mining":"376589052444672001",
-        "altcoin":"376583883426365460",
-        "support":"376580497129734154",
-        "ticketcloselog":"",
-	"supportprivate":"",
-        "spanish":"380141655539318785",
-        "general":"376563578599112705",
-        "chaintipster":"384932211956121600",
-        "masternode":"376580150290284554",
-        "joinchannels":"390895478595911681"
+        "mining":"482719042201714708",
+        "altcoin":"427168265454747667",
+        "support":"506853846476128277",
+        "ticketcloselog":"506854605578174464",
+	    "supportprivate":"506885023920554005",
+        "spanish":"506885281820049409",
+        "general":"428635473049812992",
+        "chaintipster":"495174097739710484",
+        "stake":"506885741280755722",
+        "joinchannels":"506850285323288616"
     },
     "id":{  
         "self":"379917668116856833",
@@ -39,7 +39,7 @@
         ]
     },
     "coin":{  
-        "symbol":"",
-        "explorer":""
+        "symbol":"XGAME",
+        "explorer":"http://www.explorer.xgamebits.org/"
     }
 }
