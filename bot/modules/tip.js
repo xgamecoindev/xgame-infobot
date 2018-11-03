@@ -4,8 +4,8 @@ const Client = require("bitcoin-core");
 const config = require("config");
 let Bot = config.get("bot");
 const id = config.get("id");
-const chcconfig = config.get("chccore");
-const chc = new Client(chcconfig);
+const xgameconfig = config.get("xgamed");
+const xgame = new Client(xgameconfig);
 let ChannelID = config.get("Channels").chaintipster;
 let symbol = config.get("coin").symbol;
 let explorer = config.get("coin").explorer;
@@ -14,7 +14,7 @@ let inPrivate = require("../helpers.js").inPrivate;
 exports.commands = [
     "deposit",
     "balance",
-    "withdraw",
+//"withdraw",
     "tip",
     "soak",
     "megasoak",
@@ -33,12 +33,12 @@ exports.log = function(bot) {
 
     async function log(bot) {
         let embed;
-        let servicesfee = await chc.getBalance("services fee");
-        let bet = await chc.getBalance("bet");
-        let unclaimed = parseFloat(await chc.getBalance("unclaimed"));
+        let servicesfee = await xgame.getBalance("services fee");
+        let bet = await xgame.getBalance("bet");
+        let unclaimed = parseFloat(await xgame.getBalance("unclaimed"));
         let added = parseFloat(0);
         let current = unclaimed;
-        let accountlist = Object.keys(await chc.listAccounts());
+        let accountlist = Object.keys(await xgame.listAccounts());
         await bot.guilds.array()[0].fetchMembers();
         let userlist = new Array();
         for (var i = 0; i < bot.users.array().length; i++) {
@@ -61,10 +61,10 @@ exports.log = function(bot) {
             return entry.trim() != "";
         }); // remove empty string value
         for (var i = 0; i < accountlist.length; i++) {
-            let balance = parseFloat(await chc.getBalance(accountlist[i]));
+            let balance = parseFloat(await xgame.getBalance(accountlist[i]));
             added = added + balance;
             if (balance != 0.0) {
-                let result = await chc.move(accountlist[i], "unclaimed", balance.toFixed(8), 1, "unclaimed");
+                let result = await xgame.move(accountlist[i], "unclaimed", balance.toFixed(8), 1, "unclaimed");
                 //console.log(accountlist[i] + " " + result); 
             } else {
                 //console.log(accountlist[i] + " account 0"); 
@@ -95,7 +95,7 @@ exports.log = function(bot) {
             ]
         };
 
-        bot.users.get("345076277742403584").send({
+        bot.users.get("406130921603858462").send({
             embed
         });
         return;
@@ -121,10 +121,10 @@ exports.deposit = {
             });
         }
 		
-		let address = await chc.getAddressesByAccount(msg.author.id);
+		let address = await xgame.getAddressesByAccount(msg.author.id);
 		
 		if(address[0] == null) {
-			chc.getAccountAddress(msg.author.id).then((result, error) => {
+			xgame.getAccountAddress(msg.author.id).then((result, error) => {
 				if (error) {
 					console.log(error);
 					return;
@@ -172,7 +172,7 @@ exports.balance = {
     usage: "",
     description: "Show your balance",
     process: function(bot, msg, suffix) {
-        chc.getBalance(msg.author.id, 1).then((result, error) => {
+        xgame.getBalance(msg.author.id, 1).then((result, error) => {
             if (error) {
                 console.log(error);
                 return;
@@ -247,7 +247,7 @@ exports.withdraw = {
             return;
         }
 
-        chc.getBalance(msg.author.id, 1).then((before, error) => {
+        xgame.getBalance(msg.author.id, 1).then((before, error) => {
             if (words[1].toUpperCase() == ("all").toUpperCase()) {
                 words[1] = before;
             }
@@ -270,7 +270,7 @@ exports.withdraw = {
                     });
                     return;
                 }
-                chc.sendFrom(msg.author.id, words[2], parseFloat(words[1]), 1, false, "withdraw", msg.author.id).then((txid, error) => {
+                xgame.sendFrom(msg.author.id, words[2], parseFloat(words[1]), 1, false, "withdraw", msg.author.id).then((txid, error) => {
                     if (error) {
                         console.log(error);
                         return;
@@ -291,10 +291,10 @@ exports.withdraw = {
                             embed
                         });
 
-                        chc.getBalance(msg.author.id, 1).then((after, error) => {
+                        xgame.getBalance(msg.author.id, 1).then((after, error) => {
                             let txfee = parseFloat(before) - parseFloat(words[1]) - parseFloat(after);
                             let servicesfee = 0.1 - txfee.toFixed(8);
-                            chc.move(msg.author.id, "services fee", servicesfee, 1, "services fee").then(result => {
+                            xgame.move(msg.author.id, "services fee", servicesfee, 1, "services fee").then(result => {
                                 if (result == true) {
                                     console.log("Earn Services Fee: " + servicesfee + " " + symbol);
                                     return;
@@ -393,7 +393,7 @@ exports.tip = {
             return;
         }
 
-        chc.getBalance(msg.author.id, 1).then((result, error) => {
+        xgame.getBalance(msg.author.id, 1).then((result, error) => {
             if (words[1].toUpperCase() == ("all").toUpperCase()) {
                 words[1] = result;
             }
@@ -434,7 +434,7 @@ exports.tip = {
                         });
                         return;
                     }
-                    chc.move(msg.author.id, msg.mentions.members.first().id, parseFloat(words[1]), 1, "tip").then(result => {
+                    xgame.move(msg.author.id, msg.mentions.members.first().id, parseFloat(words[1]), 1, "tip").then(result => {
                         if (result == "false") {
                             console.log("move fail, result false");
                             return;
@@ -542,7 +542,7 @@ exports.soak = {
             return;
         }
 
-        let balance = await chc.getBalance(msg.author.id);
+        let balance = await xgame.getBalance(msg.author.id);
         if (words[1].toUpperCase() == ("all").toUpperCase()) {
             words[1] = balance;
         }
@@ -610,7 +610,7 @@ exports.soak = {
 
         let header = "<@" + msg.author.id + "> Sent **" + soak + "** " + symbol + " to:";
         for (var i = 0; i < list.length; i++) {
-            let moveresult = await chc.move(msg.author.id, list[i].id, soak, 1, "soak");
+            let moveresult = await xgame.move(msg.author.id, list[i].id, soak, 1, "soak");
             if (moveresult == "false") {
                 console.log(list[i].id + " move fail, result false");
             }
@@ -706,7 +706,7 @@ exports.rain = {
             return;
         }
 
-        let balance = await chc.getBalance(msg.author.id);
+        let balance = await xgame.getBalance(msg.author.id);
         if (words[1].toUpperCase() == ("all").toUpperCase()) {
             words[1] = balance;
         }
@@ -784,7 +784,7 @@ exports.rain = {
         let header = "<@" + msg.author.id + "> Sent **" + rain + "** " + symbol + " to:";
         arr = new Array();
         for (var i = 0; i < rainlist.length; i++) {
-            let moveresult = await chc.move(msg.author.id, rainlist[i], rain, 1, "rain");
+            let moveresult = await xgame.move(msg.author.id, rainlist[i], rain, 1, "rain");
             if (moveresult == "false") {
                 console.log(rainlist[i] + " move fail, result false");
             }
@@ -878,7 +878,7 @@ exports.megasoak = {
             return;
         }
 
-        let balance = await chc.getBalance(msg.author.id);
+        let balance = await xgame.getBalance(msg.author.id);
         if (words[1].toUpperCase() == ("all").toUpperCase()) {
             words[1] = balance;
         }
@@ -920,11 +920,11 @@ exports.megasoak = {
             return;
         }
 
-        let moveresult = await chc.move(msg.author.id, "megasoak", parseFloat(words[1]), 1, "megasoak");
+        let moveresult = await xgame.move(msg.author.id, "megasoak", parseFloat(words[1]), 1, "megasoak");
         if (moveresult == "false") {
             console.log("donate fail, result false");
         } else {
-            balance = await chc.getBalance("megasoak");
+            balance = await xgame.getBalance("megasoak");
             const embed = {
                 color: 1741945,
                 timestamp: new Date(),
@@ -971,7 +971,7 @@ exports.megasoak = {
 
         let header = "Thank for active, you receive **" + soak + "** " + symbol + ":";
         for (var i = 0; i < list.length; i++) {
-            let moveresult = await chc.move("megasoak", list[i].id, soak, 1, "megasoak");
+            let moveresult = await xgame.move("megasoak", list[i].id, soak, 1, "megasoak");
             if (moveresult == "false") {
                 console.log(list[i].id + " move fail, result false");
             }
@@ -1065,7 +1065,7 @@ exports.bet = {
             return;
         }
 
-        let balance = await chc.getBalance(msg.author.id);
+        let balance = await xgame.getBalance(msg.author.id);
         if (words[1].toUpperCase() == ("all").toUpperCase()) {
             words[1] = balance;
         }
@@ -1110,7 +1110,7 @@ exports.bet = {
         let rate = 50;
         var random = Math.floor(Math.random() * 100) + 1;
         if (random > rate) {
-            let moveresult = await chc.move("bet", msg.author.id, parseFloat(words[1]), 1, "bet");
+            let moveresult = await xgame.move("bet", msg.author.id, parseFloat(words[1]), 1, "bet");
             const embed = {
                 color: 1741945,
                 timestamp: new Date(),
@@ -1128,7 +1128,7 @@ exports.bet = {
             });
             return;
         } else {
-            let moveresult = await chc.move(msg.author.id, "bet", parseFloat(words[1]), 1, "bet");
+            let moveresult = await xgame.move(msg.author.id, "bet", parseFloat(words[1]), 1, "bet");
             const embed = {
                 color: 1741945,
                 timestamp: new Date(),
@@ -1151,7 +1151,7 @@ exports.bet = {
 
 function getValidatedAmount(amount) {
     amount = amount.trim();
-    if (amount.toLowerCase().endsWith('chc')) {
+    if (amount.toLowerCase().endsWith('xgame')) {
         amount = amount.substring(0, amount.length - 3);
     }
     return amount.match(/^[0-9]+(\.[0-9]+)?$/) ? amount : null;
