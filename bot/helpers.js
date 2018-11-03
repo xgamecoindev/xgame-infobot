@@ -1,9 +1,9 @@
 let config = require("config");
 let role = config.get("role");
 
-// Checks if user is allowed to use a command only for Chainster user
-exports.hasPermsChainster = function(msg) {
-    return msg.member.roles.some(r => role.chainster.includes(r.name));
+// Checks if user is allowed to use a command only for Xgamester user
+exports.hasPermsXgamester = function(msg) {
+    return msg.member.roles.some(r => role.xgamester.includes(r.name));
 };
 
 // Checks if user is allowed to use a command only for Support user
