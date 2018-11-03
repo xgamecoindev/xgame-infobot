@@ -6,7 +6,7 @@ let ChannelID = config.get("Channels").spanish;
 let inPrivate = require("../helpers.js").inPrivate;
 
 exports.commands = [
-    "spanish"
+//    "spanish"
 ];
 
 exports.spanish = {
